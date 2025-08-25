@@ -1,5 +1,9 @@
-from django.http import HttpResponse # type: ignore
-from django.shortcuts import render # type: ignore
+# Em mysite_django/urls.py
 
-def django_logo(request):
-    return render(request, "core/logo.html")
+from django.contrib import admin
+from django.urls import path, include # Adicione 'include'
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('core.urls')), # Adicione esta linha
+]
