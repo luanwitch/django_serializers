@@ -8,12 +8,14 @@ class Curso(models.Model):
     def __str__(self):
         return self.nome_curso
 
+
 class Aluno(models.Model):
     nome_aluno = models.CharField(max_length=100)
     rg = models.CharField(max_length=9, unique=True)
     cpf = models.CharField(max_length=11, unique=True)
     data_nascimento = models.DateField()
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    email = models.EmailField()
 
     def __str__(self):
         return self.nome_aluno
