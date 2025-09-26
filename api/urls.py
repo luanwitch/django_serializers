@@ -1,19 +1,18 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework import routers
+
+# Importando os ViewSets de seus respectivos aplicativos
+from categories.views import CategoryViewSet
 from products.views import ProductViewSet
 from orders.views import OrderViewSet
-from categories.views import CategoryViewSet
-from .viewsets import CursoViewSet, AlunoViewSet
-from .views import CursoViewSet, AlunoViewSet
 
-router = DefaultRouter()
-router.register(r'products', ProductViewSet)
-router.register(r'orders', OrderViewSet)
-router.register(r'categories', CategoryViewSet)
-router.register(r'cursos', CursoViewSet, basename="curso")
-router.register(r'alunos', AlunoViewSet, basename="aluno")
+# Criando um roteador para os viewsets
+router = routers.DefaultRouter()
+router.register(r'products', ProductViewSet, basename='products')
+router.register(r'categories', CategoryViewSet, basename='categories')
+router.register(r'orders', OrderViewSet, basename='orders')
 
 urlpatterns = [
+    # Incluindo as URLs do roteador
     path('', include(router.urls)),
-    path('api/', include(router.urls)),
 ]
