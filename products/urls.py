@@ -1,8 +1,10 @@
-# products/urls.py
-from rest_framework.routers import DefaultRouter
-from .views import ProductViewSet
+from django.contrib import admin
+from django.urls import path, include
 
-router = DefaultRouter()
-router.register(r'products', ProductViewSet)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('categories.urls')),  # categories
+    path('api/', include('api.urls')),         # cursos e alunos
+    path('api/', include('products.urls')),    # produtos
+    path('api/', include('orders.urls')),      # pedidos
+]
