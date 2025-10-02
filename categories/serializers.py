@@ -1,7 +1,8 @@
-from rest_framework import serializers # type: ignore
+from rest_framework import serializers
 from .models import Category
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ["id", "name"]  
+        fields = ['id', 'name']  
+        read_only_fields = ['id']  

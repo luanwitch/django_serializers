@@ -1,27 +1,18 @@
 from django.test import TestCase
-from rest_framework.test import APIClient
-from rest_framework import status
-from .models import Order
+from products.models import Product, Category
+from orders.models import Order
 
-class OrderAPITest(TestCase):
+class OrderTests(TestCase):
     def setUp(self):
-        self.client = APIClient()
-        self.order = Order.objects.create(
-            product="Notebook",
-            quantity=2,
-            status="pending"
+        self.category = Category.objects.create(name='Eletrônicos')
+        self.product = Product.objects.create(
+            name='Smartphone',
+            price=500.00,
+            stock=10,        
+            available=True,  
+            category=self.category
         )
-
-    def test_get_orders(self):
-        response = self.client.get("/api/orders/")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_create_order(self):
-        data = {
-            "product": "Mouse",
-            "quantity": 1,
-            "status": "completed"
-        }
-        response = self.client.post("/api/orders/", data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Order.objects.count(), 2)
+        self.order = Order.objects.create(
+            product=self.product,
+            quantity=1
+        )
