@@ -21,7 +21,9 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'categories',
+    "django_extensions",
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
