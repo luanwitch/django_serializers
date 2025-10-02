@@ -1,21 +1,17 @@
-# categories/tests.py
-from django.test import TestCase
-from rest_framework.test import APIClient
-from rest_framework import status
 from django.urls import reverse
-from .models import Category
+from rest_framework.test import APITestCase
+from rest_framework import status
+from categories.models import Category
 
-class CategoryTests(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.category = Category.objects.create(name='Eletrônicos')
-
+class CategoryTests(APITestCase):
     def test_create_category(self):
-        url = reverse('categories-list')  
-        response = self.client.post(url, {'name': 'Livros'})
+        url = reverse('category-list')  
+        data = {'name': 'Eletrônicos'}
+        response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_get_categories(self):
-        url = reverse('categories-list')  
+        Category.objects.create(name='Eletrônicos')
+        url = reverse('category-list')  
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
