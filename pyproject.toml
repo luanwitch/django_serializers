@@ -20,5 +20,5 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "django-extensions (>=4.1,<5.0)"
+    "django-extensions >=4.1,<5.0"
 ]
