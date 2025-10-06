@@ -1,15 +1,18 @@
 [project]
 name = "django-serializers"
 version = "0.1.0"
-description = ""
+description = "Projeto Django para estudo de serializers"
 authors = [
-    {name = "Luan Vieira",email = "luanvwittchind@gmail.com"}
+    {name = "Luan Vieira", email = "luanvwittchind@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "django>=5.0,<6.0",
+    "djangorestframework>=3.15,<4.0",
+    "python-decouple>=3.8,<4.0",
+    "dj-database-url>=2.2,<3.0"
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
