@@ -1,1 +1,8 @@
-# Exercicio EBAC modulo 15
+# Projeto Django - API de Produtos e Pedidos
+
+## 🚀 Como rodar o projeto
+
+1. Criar ambiente virtual e instalar dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```

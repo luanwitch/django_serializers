@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'categories',
-    "django_extensions",
+    #"django_extensions",
 ]
 
 
